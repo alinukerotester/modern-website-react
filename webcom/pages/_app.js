@@ -1,13 +1,21 @@
-import '@/styles/globals.css'
+import React from 'react';
+import { Toaster } from 'react-hot-toast';
+
+import { Layout } from '../components';
+import '../styles/globals.css';
+import { StateContext } from '../context/StateContext';
 import { Analytics } from '@vercel/analytics/react';
 
 function MyApp({ Component, pageProps }) {
   return (
-    <>
-      <Component {...pageProps} />
-      <Analytics />
-    </>
-  );
+    <StateContext>
+      <Layout>
+        <Toaster />
+        <Component {...pageProps} />
+        <Analytics />
+      </Layout>
+    </StateContext>
+  )
 }
 
-export default MyApp;
+export default MyApp
